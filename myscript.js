@@ -9,4 +9,20 @@ di volte che l’utente ha inserito un numero consentito. */
 
 
 // Dichiarazione variabili
-console.log("Ciao a tutti");
+var list, number;
+
+// Generazione di 16 numeri random da 1 a 100
+function nGenerator () {
+  var number = Math.floor(Math.random() * 101);
+  return number;
+}
+
+// Lista vuota dove inserire per 16 volte il numero random generato
+list = [];
+console.log(list);
+
+// Generare il numero e pushare nella lista per 16 volte
+for (var i = 0; i < 16; i++) {
+  number = nGenerator();
+  list.push(number);
+}
