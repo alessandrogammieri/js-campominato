@@ -9,12 +9,12 @@ di volte che l’utente ha inserito un numero consentito. */
 
 
 // Dichiarazione variabili
-var list, number;
+var list, number, controln, lose, wins, puntata, numb, tentativi;
 
 // Generazione di 16 numeri random da 1 a 100
 function nGenerator () {
-  var number = Math.floor(Math.random() * 101);
-  return number;
+  var n = Math.floor(Math.random() * 101);
+  return n;
 }
 
 // Lista vuota dove inserire per 16 volte il numero random generato
@@ -22,7 +22,36 @@ list = [];
 console.log(list);
 
 // Generare il numero e pushare nella lista per 16 volte
-for (var i = 0; i < 16; i++) {
+var i = 1;
+while ( i <= 16) {
   number = nGenerator();
-  list.push(number);
+  controln = list.indexOf(number);
+  if (controln < 0) {
+    list.push(number);
+    i++;
+  }
+}
+
+// L'utente deve inserire un numero
+lose = 0;
+wins = 0;
+
+for (i = 1; i < 84; i++) {
+  puntata = parseInt(prompt("Inserisci un numero da 1 a 100"));
+  numb = [];
+  tentativi = 3 - lose;
+  numb.push(puntata);
+
+  if (list.includes(puntata)) {
+    alert("BOOM!!!" + " hai ancora" + tentativi + " tentativi")
+    lose = lose + 1;
+  }
+  else {
+    wins = wins + 1;
+    alert("Complimenti hai vinto per " + wins + " volte");
+  }
+  if (tentativi == 0){
+    alert("GAME OVER!");
+    i = 84;
+  }
 }
